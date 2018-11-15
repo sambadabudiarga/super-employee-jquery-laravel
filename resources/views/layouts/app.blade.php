@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="{{ asset("/bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
 
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset("/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") }}">
+
     <style>
         body {
             font-family: 'Lato';
@@ -67,5 +70,17 @@
     <script src="{{ asset("/bower_components/jquery/dist/jquery.min.js") }}"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset("/bower_components/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+
+    <!-- DataTables -->
+    <script src="{{ asset("/bower_components/datatables.net/js/jquery.dataTables.min.js") }}"></script>
+    <script src="{{ asset("/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") }}"></script>
+
+    <script type="text/javascript">
+        // defining vars that needs Laravel functions
+        var urlAsset = "{{ asset('/') }}";
+        var urlRoot = "{{ url('/') }}";
+    </script>
+
+    @yield('script')
 </body>
 </html>

@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 // Route::group(['middleware' => ['web', 'auth']], function() {
     Route::get('/home', 'HomeController@index');
+
+    Route::get('/employees/datatable', 'EmployeeController@datatable');
 // });
