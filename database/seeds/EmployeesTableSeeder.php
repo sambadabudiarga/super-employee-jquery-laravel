@@ -70,8 +70,32 @@ class EmployeesTableSeeder extends Seeder
             [
                 'first_name' => 'Jaidy',
                 'last_name' => 'Brok',
-                'country_id' => 2,
+                'country_id' => 6,
                 'age'   => 38
+            ],
+            [
+                'first_name' => 'Kader',
+                'last_name' => 'Groben',
+                'country_id' => 6,
+                'age'   => 25
+            ],
+            [
+                'first_name' => 'Hedwig',
+                'last_name' => 'Akyuz',
+                'country_id' => 6,
+                'age'   => 27
+            ],
+            [
+                'first_name' => 'Anouck',
+                'last_name' => 'Klopstra',
+                'country_id' => 6,
+                'age'   => 32
+            ],
+            [
+                'first_name' => 'My',
+                'last_name' => 'Kalter',
+                'country_id' => 6,
+                'age'   => 22
             ],
         ];
 
