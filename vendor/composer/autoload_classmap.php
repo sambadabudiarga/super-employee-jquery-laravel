@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAvatarInEmployee' => $baseDir . '/database/migrations/2018_11_17_050816_add_avatar_in_employee.php',
     'CountriesTableSeeder' => $baseDir . '/database/seeds/CountriesTableSeeder.php',
     'CreateCountriesTables' => $baseDir . '/database/migrations/2018_11_15_123243_create_countries_tables.php',
     'CreateEmployeeTables' => $baseDir . '/database/migrations/2018_11_15_123248_create_employee_tables.php',

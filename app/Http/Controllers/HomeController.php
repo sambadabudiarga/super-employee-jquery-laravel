@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $countries = Country::lists('name', 'id');
+        return view('home', compact('countries'));
     }
 }
