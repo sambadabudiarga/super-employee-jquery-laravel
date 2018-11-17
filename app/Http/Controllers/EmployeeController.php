@@ -55,4 +55,62 @@ class EmployeeController extends Controller
         $employee["country"] = Country::find($employee->country_id)->name;
         return $employee;
     }
+
+    public function chart() {
+        $data = [];
+
+        $data["emp_ages"] = Employee::distinct()->orderBy('age')->lists('age', 'age')->toArray();
+        $data["emp_countries"] = Country::orderBy('name')->lists('name', 'id')->toArray();
+
+        $employee_ages = Employee::from('employees as a')
+                        ->join('countries as b', 'a.country_id', '=', 'b.id')
+                        ->selectRaw('b.name as country, a.age, COUNT(*) as data_count')
+                        ->groupBy('b.name', 'a.age')
+                        ->orderBy('b.name', 'asc')
+                        ->orderBy('a.age', 'asc')
+                        ->get()
+                        ->toArray();
+
+        foreach($employee_ages as $employee_age) {
+            if (!isset($data["datasets"][$employee_age["country"]])) {
+                $data["datasets"][$employee_age["country"]]['label'] = $employee_age["country"];
+                $data["datasets"][$employee_age["country"]]['fill'] = false;
+                $data["datasets"][$employee_age["country"]]['spanGaps'] = true;
+                $the_color = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.73)";
+                $data["datasets"][$employee_age["country"]]['borderColor'] = $the_color;
+                $data["datasets"][$employee_age["country"]]['pointBorderColor'] = $the_color;
+                $data["datasets"][$employee_age["country"]]['pointBackgroundColor'] = $the_color;
+                $data["datasets"][$employee_age["country"]]['pointHoverBackgroundColor'] = "#fff";
+                $data["datasets"][$employee_age["country"]]['pointHoverBorderColor'] = $the_color;
+
+                // $data["datasets"][$employee_age["country"]]['data'] = [];
+                // $data["datasets"][$employee_age["country"]]['data']['labels'] = $data["emp_ages"];
+
+                // for ($i = 0; $i < count($data["emp_ages"]); $i++) {
+                //     $data["datasets"][$employee_age["country"]]['data'][$i] = null;
+                // foreach($data["emp_ages"] as $emp_age) {
+                //     $data["datasets"][$employee_age["country"]]['data']['y'] = 
+                // }
+            }
+
+            // array_push($data["datasets"][$employee_age["country"]]['data'], [
+            //     'x' => $employee_age["age"],
+            //     'y' => $employee_age["data_count"],
+            // ]);
+
+            // $array_key = array_keys($data["emp_ages"], $employee_age["age"])[0];
+            // $data["datasets"][$employee_age["country"]]['data'][$array_key] = $employee_age["data_count"];
+            $data["datasets"][$employee_age["country"]]['data'][] = [
+                'x' => $employee_age["age"],
+                'y' => $employee_age["data_count"],
+            ];
+        }
+
+        return ($data);
+        // return json_encode($data);
+    }
+
+    public function rand_color() {
+        return str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+    }
 }

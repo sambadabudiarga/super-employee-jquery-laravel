@@ -43,6 +43,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/statistic') }}">Statistic</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -75,10 +76,15 @@
     <script src="{{ asset("/bower_components/datatables.net/js/jquery.dataTables.min.js") }}"></script>
     <script src="{{ asset("/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") }}"></script>
 
+    <script src="{{ asset("/bower_components/Chart.js/dist/Chart.bundle.min.js") }}"></script>
+
     <script type="text/javascript">
         // defining vars that needs Laravel functions
         var urlAsset = "{{ asset('/') }}";
         var urlRoot = "{{ url('/') }}";
+
+        // set active list
+        $('a[href="' + window.location + '"]').parent('li').addClass('active')
     </script>
 
     @yield('script')
