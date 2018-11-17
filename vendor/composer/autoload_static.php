@@ -271,6 +271,7 @@ class ComposerStaticInite5f5100089d9ef105e617402b794fd24
     );
 
     public static $classMap = array (
+        'AddAvatarInEmployee' => __DIR__ . '/../..' . '/database/migrations/2018_11_17_050816_add_avatar_in_employee.php',
         'CountriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CountriesTableSeeder.php',
         'CreateCountriesTables' => __DIR__ . '/../..' . '/database/migrations/2018_11_15_123243_create_countries_tables.php',
         'CreateEmployeeTables' => __DIR__ . '/../..' . '/database/migrations/2018_11_15_123248_create_employee_tables.php',
