@@ -21,4 +21,5 @@ Route::get('/', function () {
     Route::get('/home', 'HomeController@index');
 
     Route::get('/employees/datatable', 'EmployeeController@datatable');
+    Route::post('/employees', 'EmployeeController@store');
 // });
