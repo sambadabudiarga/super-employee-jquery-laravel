@@ -1,7 +1,6 @@
-# Cleq OU Test
+# Super Employee
 
-This repository is used as my testing for the interview in Cleq OU.
-Application made for adding new data employee and view statistic of employees data.
+This app was made for me learning using jQuery and Laravel.
 
 ## Installation
 
